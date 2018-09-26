@@ -8,7 +8,7 @@ function displayGif() {
 
     //Giphy API query URL + key set-up, kept separate for scale
     var apiKey = "TrJAvqvX4FLWnlI411Np3PqB2SnWv60c"; //personal key
-    var queryURL = "http://api.giphy.com/v1/gifs/random?api_key="+apiKey+"&tag="+animal.toLowerCase()+"&limit=1"; //random request
+    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key="+apiKey+"&tag="+animal.toLowerCase()+"&limit=1"; //random request
     console.log("**** Query URL: "+queryURL+" ****"); // confirm
 
     // AJAX call for the specific animal button being clicked
