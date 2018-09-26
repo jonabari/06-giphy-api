@@ -16,28 +16,18 @@
     <title>06 - Giphy API</title>
   </head> 
   <body>
-    <div class="m-4"></div>
-    <div class="container jumbotron m-auto">
-        <section class="row mb-4 align-items-center text-center">
+    <div class="m-5"></div>
+    <div class="container jumbotron m-auto bg-dark">
+        <section class="row mb-5 align-items-center text-center">
             <div class="col-md-12">
-                <h1 class="m-0">gif.fetch();*</h1>
+                <h1 class="m-0" style="color:white;">gif.fetch();*</h1>
             </div>
         </section>
-        <section class="row mb-5 align-items-center">
-            <div class="col-md-8">
-                <div class="card  mb-3">
-                    <div class="card-header">
-                            <h6><i class="fas fa-bookmark"></i> Categories</h6>
-                    </div>
-                    <div class="card-body">
-                        <div id="btn-area"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
+        <section class="row d-flex align-items-stretch align-items-center text-center">
+            <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-header">
-                            <h6><i class="fas fa-search"></i> Add a category</h6>
+                            <h6><i class="fas fa-search"></i>&ensp;Add a category</h6>
                     </div>
                     <div class="card-body">
                         <div id="srch-area">
@@ -50,12 +40,22 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-8 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                            <h6><i class="fas fa-bookmark"></i>&ensp;Categories</h6>
+                    </div>
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <div id="btn-area"></div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section class="row mb-3 align-items-center">
+        <section class="row mb-3 align-items-center text-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h6>.gifs  <i class="fas fa-paw"></i>  <i class="fas fa-bone"></i>  <i class="fas fa-feather"></i>  <i class="fas fa-question"></i></h6>
+                        <h6>.gifs&ensp;&ensp;<i class="fas fa-paw"></i>&ensp;&ensp;<i class="fas fa-bone"></i>&ensp;&ensp;<i class="fas fa-feather"></i>&ensp;&ensp;<i class="fas fa-question"></i></h6>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -71,6 +71,7 @@
             </div>
         </section>
     </div>
+    <div class="m-5"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

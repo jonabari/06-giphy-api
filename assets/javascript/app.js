@@ -18,19 +18,30 @@ function displayGif() {
     }).then(function(response) {
 
         // First we set up a div to hold this new gif
-        var gifDiv = $("<div class='gif float-left m-2'>");
+        var gifDiv = $("<div class='gif m-auto'>");
 
         // We store the rating data in a variable
         var gifTitle = animal.toUpperCase();
         // Then create a p element to append it to
-        var pRating = $("<p>").text(gifTitle);
-        gifDiv.append(pRating); //Appended
+        a = $("<h5>").text(gifTitle);
+        gifDiv.append(a); //Appended
 
-        // We store the gif url in a variable
-        var gifURL = response.data.images.fixed_height.url;
-        // and create an img element to append it to
-        var gif = $("<img>").attr("src", gifURL);
+        // We greatea gif element with the id "gif"
+        var gif = $("<img>").attr("id", "gif"); //add src attribute
+        gif.addClass("mb-3 img-fluid"); // it's a responsive img w/a btm margin
+
+        //This next block of code adds the attrs necessary to toggle the animation
+        gif.attr("data-state", "still"); // declare it's initial data-state as an attr
+        gif.attr("data-still", response.data.images.original_still.url); //still state url
+        gif.attr("data-animate", response.data.images.original.url); //animated state url
+
+        //Finally, we declare the initial url for the gir
+        gif.attr("src", gif.attr("data-still")); //taken from the data-still attr
         gifDiv.append(gif); //appended
+
+        //For presentation purposes, we add a separator and source URL
+        a=$("<hr>");//add a separator
+        gifDiv.append(a); //append it
 
         // puts the new gif at the top of the gif-area
         $("#gif-area").prepend(gifDiv);
@@ -58,7 +69,7 @@ function renderButtons() {
 // At any moment, the user can add another button to the menu
 $("#add-gif").on("click", function(event) {
 
-event.preventDefault();// first we have this, which prevents the form from submitting (and reloading the html)
+event.preventDefault();// first we prevent the form from submitting (and reloading the html)
 
 var animal = $("#gif-input").val().trim(); //Then it records the user´s text entry, sans any additional spaces, etc.
 
@@ -71,26 +82,25 @@ else {
 };
 });
 
-/* <script type="text/javascript">
-$(".gif").on("click", function() {
-  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-  var state = $(this).attr("data-state");
-  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-  // Then, set the image's data-state to animate
-  // Else set src to the data-still value
-  if (state === "still") {
-    $(this).attr("src", $(this).attr("data-animate"));
-    $(this).attr("data-state", "animate");
-  } else {
-    $(this).attr("src", $(this).attr("data-still"));
-    $(this).attr("data-state", "still");
-  }
-});
-</script> */
-
-
 //GLOBAL
 //Start by rendering the example buttons right away
 renderButtons();
+
 //If any buttons in the btn-area are pressed, render gif on page
 $(document).on("click", ".gif-btn", displayGif);
+
+//The gifs are initially paused. 
+$(document).on("click", "#gif", function() { //click to animate them
+
+    var state = $(this).attr("data-state"); //store it's current state
+  
+    //if it is still, then it''ll replace it with the regular URL
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate")); // replace url
+      $(this).attr("data-state", "animate"); //toggle data-state
+    //The opposite is true if the gif was already animated
+    } else {
+      $(this).attr("src", $(this).attr("data-still")); //reinstate still state url
+      $(this).attr("data-state", "still"); //toggle data-state
+    }
+  });
