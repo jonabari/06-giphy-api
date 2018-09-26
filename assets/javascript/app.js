@@ -92,13 +92,13 @@ $(document).on("click", "#gif", function() { //click to animate them
 
     var state = $(this).attr("data-state"); //store it's current state
   
-    //if it is still, then it''ll replace it with the regular URL
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate")); // replace url
-      $(this).attr("data-state", "animate"); //toggle data-state
-    //The opposite is true if the gif was already animated
-    } else {
-      $(this).attr("src", $(this).attr("data-still")); //reinstate still state url
+    //if it is animated, then it''ll replace it with the still URL
+    if (state === "animate") {
+      $(this).attr("src", $(this).attr("data-still")); // replace url
       $(this).attr("data-state", "still"); //toggle data-state
+    //The opposite is true if the gif was already still
+    } else {
+      $(this).attr("src", $(this).attr("data-animate")); //reinstate animated state url
+      $(this).attr("data-state", "animate"); //toggle data-state
     }
 });
