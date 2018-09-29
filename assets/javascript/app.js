@@ -86,10 +86,10 @@ $ ( "#add-gif" ) .on ( "click" , function ( event ) {
 });
 
 //If any buttons in the btn-area are pressed, render gif on page
-$ (document) .on ( "click" , ".gif-btn" , displayGif ) ;
+$ ( document ) .on ( "click" , ".gif-btn" , displayGif ) ;
 
 //The gifs are initially paused. 
-$(document).on("click", "#gif", function() { //click to animate them
+$ ( document ) .on ( "click" , "#gif" , function() { //click to animate them
 
     var state = $ ( this ) .attr ( "data-state" ) ; //store it's current state
   
